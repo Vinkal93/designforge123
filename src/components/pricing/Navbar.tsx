@@ -12,16 +12,7 @@ const Navbar = ({ onMenuClick, onQuoteClick }: NavbarProps) => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Menu Button */}
-          <button
-            onClick={onMenuClick}
-            className="p-2 rounded-lg hover:bg-secondary transition-colors"
-            aria-label="Open menu"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
-
-          {/* Logo */}
+          {/* Logo - Left side */}
           <motion.a
             href="#"
             initial={{ opacity: 0, y: -10 }}
@@ -58,11 +49,18 @@ const Navbar = ({ onMenuClick, onQuoteClick }: NavbarProps) => {
             </Button>
           </motion.div>
 
-          {/* Mobile CTA */}
-          <div className="md:hidden">
+          {/* Mobile Menu Button + CTA */}
+          <div className="md:hidden flex items-center gap-2">
             <Button variant="forge" size="sm" onClick={onQuoteClick}>
               Quote
             </Button>
+            <button
+              onClick={onMenuClick}
+              className="p-2 rounded-lg hover:bg-secondary transition-colors"
+              aria-label="Open menu"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </div>

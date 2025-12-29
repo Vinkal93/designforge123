@@ -136,6 +136,7 @@ const SalaryModel = () => {
               <Button
                 variant={model.popular ? "forge" : "forgeOutline"}
                 className="w-full"
+                onClick={() => window.open("https://forms.gle/KWdeXmA8D4mgWtXX7", "_blank")}
               >
                 Book a Call
               </Button>

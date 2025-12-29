@@ -42,7 +42,11 @@ const CTASection = ({ onProjectClick, onMonthlyClick, onSalaryClick, onQuoteClic
               <Briefcase className="w-5 h-5" />
               Hire on Monthly Basis
             </Button>
-            <Button variant="outline" size="xl" onClick={onSalaryClick}>
+            <Button 
+              variant="outline" 
+              size="xl" 
+              onClick={() => window.open("https://forms.gle/KWdeXmA8D4mgWtXX7", "_blank")}
+            >
               <Phone className="w-5 h-5" />
               Book a Call for Salary Model
             </Button>
