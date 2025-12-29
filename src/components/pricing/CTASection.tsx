@@ -2,7 +2,14 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Briefcase, Phone, MessageCircle } from "lucide-react";
 
-const CTASection = () => {
+interface CTASectionProps {
+  onProjectClick: () => void;
+  onMonthlyClick: () => void;
+  onSalaryClick: () => void;
+  onQuoteClick: () => void;
+}
+
+const CTASection = ({ onProjectClick, onMonthlyClick, onSalaryClick, onQuoteClick }: CTASectionProps) => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background Effects */}
@@ -27,15 +34,15 @@ const CTASection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <Button variant="forge" size="xl" className="group">
+            <Button variant="forge" size="xl" className="group" onClick={onProjectClick}>
               <Sparkles className="w-5 h-5 transition-transform group-hover:rotate-12" />
               Start with a One-Time Project
             </Button>
-            <Button variant="forgeOutline" size="xl">
+            <Button variant="forgeOutline" size="xl" onClick={onMonthlyClick}>
               <Briefcase className="w-5 h-5" />
               Hire on Monthly Basis
             </Button>
-            <Button variant="outline" size="xl">
+            <Button variant="outline" size="xl" onClick={onSalaryClick}>
               <Phone className="w-5 h-5" />
               Book a Call for Salary Model
             </Button>
@@ -48,7 +55,7 @@ const CTASection = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <Button variant="ghost" size="lg" className="text-primary hover:text-accent">
+            <Button variant="ghost" size="lg" className="text-primary hover:text-accent" onClick={onQuoteClick}>
               <MessageCircle className="w-5 h-5 mr-2" />
               Get a Quote in 2 Minutes — Click Here
             </Button>

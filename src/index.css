@@ -98,6 +98,37 @@
   }
 }
 
+/* Light mode */
+.light {
+  --background: 30 20% 97%;
+  --foreground: 220 20% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 20% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 20% 10%;
+  --primary: 18 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 15% 92%;
+  --secondary-foreground: 220 20% 10%;
+  --muted: 220 15% 90%;
+  --muted-foreground: 220 10% 45%;
+  --accent: 35 100% 50%;
+  --accent-foreground: 220 20% 10%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 15% 85%;
+  --input: 220 15% 85%;
+  --ring: 18 100% 50%;
+  --sidebar-background: 0 0% 100%;
+  --sidebar-foreground: 220 20% 10%;
+  --sidebar-primary: 18 100% 50%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 220 15% 92%;
+  --sidebar-accent-foreground: 220 20% 10%;
+  --sidebar-border: 220 15% 85%;
+  --sidebar-ring: 18 100% 50%;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -128,6 +159,10 @@
     background: linear-gradient(180deg, hsl(220 18% 14%) 0%, hsl(220 18% 10%) 100%);
   }
 
+  .light .bg-gradient-card {
+    background: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 15% 97%) 100%);
+  }
+
   .glow-forge {
     box-shadow: 0 0 40px hsl(18 100% 60% / 0.25), 0 0 80px hsl(18 100% 60% / 0.1);
   }
@@ -136,5 +171,24 @@
     border: 1px solid transparent;
     background: linear-gradient(hsl(220 18% 12%), hsl(220 18% 12%)) padding-box,
                 linear-gradient(135deg, hsl(18 100% 60% / 0.5), hsl(35 100% 55% / 0.3), transparent) border-box;
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--secondary));
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.5);
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
   }
 }

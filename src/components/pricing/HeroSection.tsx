@@ -2,7 +2,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Briefcase, UserCheck } from "lucide-react";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  onProjectClick: () => void;
+  onMonthlyClick: () => void;
+  onSalaryClick: () => void;
+}
+
+const HeroSection = ({ onProjectClick, onMonthlyClick, onSalaryClick }: HeroSectionProps) => {
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden py-20">
       {/* Background glow effects */}
@@ -49,15 +55,15 @@ const HeroSection = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="flex flex-wrap justify-center gap-4"
           >
-            <Button variant="forge" size="xl" className="group">
+            <Button variant="forge" size="xl" className="group" onClick={onProjectClick}>
               <Sparkles className="w-5 h-5 transition-transform group-hover:rotate-12" />
               Start a Project
             </Button>
-            <Button variant="forgeOutline" size="xl" className="group">
+            <Button variant="forgeOutline" size="xl" className="group" onClick={onMonthlyClick}>
               <Briefcase className="w-5 h-5" />
               Hire Monthly
             </Button>
-            <Button variant="outline" size="xl" className="group">
+            <Button variant="outline" size="xl" className="group" onClick={onSalaryClick}>
               <UserCheck className="w-5 h-5" />
               Full-Time Salary Deal
             </Button>
