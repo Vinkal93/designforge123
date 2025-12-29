@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Repeat, DollarSign, Zap, Brain, Users } from "lucide-react";
+import { Repeat, DollarSign, Zap, Brain, Users, Shield } from "lucide-react";
 
 const benefits = [
   {
@@ -27,11 +27,16 @@ const benefits = [
     title: "No Freelancer Hunting",
     description: "Stop wasting time finding new designers. Focus on growing your business.",
   },
+  {
+    icon: Shield,
+    title: "Dedicated Support",
+    description: "Priority WhatsApp support and quick responses for all your design needs.",
+  },
 ];
 
 const WhyMonthly = () => {
   return (
-    <section className="py-20 relative bg-secondary/30">
+    <section className="py-20 relative bg-card border-y border-border">
       <div className="container px-4">
         {/* Section Header */}
         <motion.div

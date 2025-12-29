@@ -63,7 +63,12 @@ const HeroSection = ({ onProjectClick, onMonthlyClick, onSalaryClick }: HeroSect
               <Briefcase className="w-5 h-5" />
               Hire Monthly
             </Button>
-            <Button variant="outline" size="xl" className="group" onClick={onSalaryClick}>
+            <Button 
+              variant="outline" 
+              size="xl" 
+              className="group" 
+              onClick={() => window.open("https://forms.gle/KWdeXmA8D4mgWtXX7", "_blank")}
+            >
               <UserCheck className="w-5 h-5" />
               Full-Time Salary Deal
             </Button>
