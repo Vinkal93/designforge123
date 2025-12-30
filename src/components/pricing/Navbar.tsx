@@ -44,15 +44,23 @@ const Navbar = ({ onMenuClick, onQuoteClick }: NavbarProps) => {
             <a href="#calculator" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Calculator
             </a>
-            <Button variant="forge" size="sm" onClick={onQuoteClick}>
-              Get a Quote
+            <Button 
+              variant="forge" 
+              size="sm" 
+              onClick={() => window.open("https://forms.gle/KWdeXmA8D4mgWtXX7", "_blank")}
+            >
+              Book Now
             </Button>
           </motion.div>
 
           {/* Mobile Menu Button + CTA */}
           <div className="md:hidden flex items-center gap-2">
-            <Button variant="forge" size="sm" onClick={onQuoteClick}>
-              Quote
+            <Button 
+              variant="forge" 
+              size="sm" 
+              onClick={() => window.open("https://forms.gle/KWdeXmA8D4mgWtXX7", "_blank")}
+            >
+              Book Now
             </Button>
             <button
               onClick={onMenuClick}

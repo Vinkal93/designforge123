@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Flame, Mail, Phone, Instagram, Linkedin, Globe, Code2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Flame, Mail, Phone, Instagram, Linkedin, Globe, Code2, Shield, FileText, RotateCcw, Truck } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -69,6 +70,45 @@ const Footer = () => {
               Need a website? Check out <span className="font-semibold text-primary group-hover:underline">WebForge</span>
             </span>
           </a>
+        </motion.div>
+
+        {/* Policy Links */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-8 pt-6 border-t border-border"
+        >
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+            <Link 
+              to="/privacy-policy" 
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Shield className="w-4 h-4" />
+              Privacy Policy
+            </Link>
+            <Link 
+              to="/terms-conditions" 
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <FileText className="w-4 h-4" />
+              Terms and Conditions
+            </Link>
+            <Link 
+              to="/cancellation-refund" 
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <RotateCcw className="w-4 h-4" />
+              Cancellation and Refund
+            </Link>
+            <Link 
+              to="/shipping-delivery" 
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Truck className="w-4 h-4" />
+              Shipping and Delivery
+            </Link>
+          </div>
         </motion.div>
 
         <div className="mt-8 pt-6 border-t border-border text-center">

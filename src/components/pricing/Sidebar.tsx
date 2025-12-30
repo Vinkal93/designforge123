@@ -162,8 +162,15 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
               </div>
 
               {/* CTA Button */}
-              <Button variant="forge" className="w-full" onClick={onClose}>
-                Get a Quote
+              <Button 
+                variant="forge" 
+                className="w-full" 
+                onClick={() => {
+                  window.open("https://forms.gle/KWdeXmA8D4mgWtXX7", "_blank");
+                  onClose();
+                }}
+              >
+                Book Now
               </Button>
             </div>
           </motion.aside>
