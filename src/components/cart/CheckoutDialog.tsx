@@ -45,7 +45,7 @@ const CheckoutDialog = ({ isOpen, onClose }: CheckoutDialogProps) => {
       toast.error(parsed.error.errors[0]?.message || "Please check the form");
       return;
     }
-    const msg = buildWhatsAppMessage(items, parsed.data);
+    const msg = buildWhatsAppMessage(items, parsed.data as CustomerInfo);
     openWhatsApp(msg);
     setSubmitted(true);
     toast.success("Opening WhatsApp...");
