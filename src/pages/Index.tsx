@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/pricing/Navbar";
 import HeroSection from "@/components/pricing/HeroSection";
 import OneTimeProjects from "@/components/pricing/OneTimeProjects";
@@ -13,17 +12,22 @@ import PriceCalculator from "@/components/pricing/PriceCalculator";
 import Footer from "@/components/pricing/Footer";
 import Sidebar from "@/components/pricing/Sidebar";
 import QuoteDialog from "@/components/pricing/QuoteDialog";
+import CartDrawer from "@/components/cart/CartDrawer";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
+import FeaturedServicesSection from "@/components/home/FeaturedServicesSection";
+import CategoriesSection from "@/components/home/CategoriesSection";
+import SEO from "@/components/common/SEO";
+import { useCart } from "@/contexts/CartContext";
 
 const Index = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [quoteSubject, setQuoteSubject] = useState("");
+  const { openCart } = useCart();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   const openQuoteWithSubject = (subject: string) => {
@@ -33,52 +37,54 @@ const Index = () => {
 
   return (
     <>
-      <Helmet>
-        <title>DesignForge - Pricing & Plans | Creative Design Services</title>
-        <meta
-          name="description"
-          content="Transparent pricing for design services. One-time projects, monthly subscriptions, or hire a full-time designer. Perfect for startups, creators & businesses."
-        />
-        <meta name="keywords" content="graphic design, design services, monthly design, hire designer, brand design, social media design" />
-      </Helmet>
-
-      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-      <QuoteDialog 
-        isOpen={isQuoteOpen} 
-        onClose={() => setIsQuoteOpen(false)} 
-        defaultSubject={quoteSubject}
+      <SEO
+        title="DesignForge — Creative Design & Digital Services for Businesses"
+        description="60+ design and digital services — branding, websites, mobile apps, marketing collateral, HR docs and more. Smart discounts. Fast delivery via WhatsApp."
+        canonical="/"
+        keywords="design services, logo design, website development, business cards, brochure, mobile app, branding agency India"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "DesignForge",
+          url: "https://designforge123.lovable.app",
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "https://designforge123.lovable.app/services?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        }}
       />
 
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      <CartDrawer />
+      <QuoteDialog isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} defaultSubject={quoteSubject} />
+
       <div className="min-h-screen bg-background">
-        <Navbar 
-          onMenuClick={() => setIsSidebarOpen(true)} 
+        <Navbar
+          onMenuClick={() => setIsSidebarOpen(true)}
           onQuoteClick={() => openQuoteWithSubject("General Quote Request")}
+          onCartClick={openCart}
         />
-        
+
         <main className="pt-16">
-          <HeroSection 
+          <HeroSection
             onProjectClick={() => scrollToSection("one-time")}
             onMonthlyClick={() => scrollToSection("monthly")}
             onSalaryClick={() => scrollToSection("salary")}
           />
-          
-          <div id="one-time">
-            <OneTimeProjects />
-          </div>
-          
-          <div id="monthly">
-            <MonthlyPlans />
-          </div>
-          
-          <div id="salary">
-            <SalaryModel />
-          </div>
-          
+
+          <CategoriesSection />
+          <FeaturedServicesSection />
+
+          <div id="one-time"><OneTimeProjects /></div>
+          <div id="monthly"><MonthlyPlans /></div>
+          <div id="salary"><SalaryModel /></div>
+
           <WhyMonthly />
           <ComparisonTable />
           <PriceCalculator />
           <TrustSection />
-          <CTASection 
+          <CTASection
             onProjectClick={() => openQuoteWithSubject("One-Time Project Quote")}
             onMonthlyClick={() => openQuoteWithSubject("Monthly Plan Quote")}
             onSalaryClick={() => openQuoteWithSubject("Full-Time Salary Discussion")}
@@ -87,6 +93,7 @@ const Index = () => {
         </main>
 
         <Footer />
+        <WhatsAppButton />
       </div>
     </>
   );
